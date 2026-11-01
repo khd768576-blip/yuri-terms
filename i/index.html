@@ -14,17 +14,16 @@ a.btn{display:block;text-decoration:none;border-radius:14px;padding:14px;font-we
 a.pri{background:var(--accent);color:#fff}a.sec{border:2px solid var(--line);color:var(--ink)}
 small{display:block;color:var(--muted);margin-top:16px;line-height:1.5}
 </style></head><body>
-<main><div class="mark">ゆ</div><h1 id="t"></h1><p id="s"></p><div class="code" id="code"></div>
-<a class="btn pri" id="open"></a><a class="btn sec" id="play"></a><small id="n"></small></main>
+<main><div class="mark">ゆ</div><h1 id="t"></h1><p id="s"></p><a class="btn pri" id="open"></a><a class="btn sec" id="play"></a><small id="n"></small></main>
 <script>
 const L = {
- en:["You're invited!","A friend wants to learn Japanese with you on Japanese with Yuri. Add each other and compete in weekly leagues.","Open in the app","Get it on Google Play","Installed the app? Tap “Open in the app” again, or enter this friend code in League › Friends."],
- ko:["친구 초대가 왔어요!","친구가 Japanese with Yuri에서 같이 일본어 공부하자고 초대했어요. 친구가 되어 주간 리그에서 겨뤄 보세요.","앱에서 열기","Google Play에서 받기","앱을 설치했다면 '앱에서 열기'를 다시 누르거나, 리그 › 친구에서 이 코드를 입력하세요."],
- vi:["Bạn được mời!","Một người bạn muốn cùng bạn học tiếng Nhật trên Japanese with Yuri. Hãy kết bạn và thi đấu trong giải hằng tuần.","Mở trong ứng dụng","Tải trên Google Play","Đã cài ứng dụng? Bấm “Mở trong ứng dụng” lần nữa, hoặc nhập mã này ở Giải đấu › Bạn bè."],
- id:["Kamu diundang!","Seorang teman ingin belajar bahasa Jepang bersamamu di Japanese with Yuri. Berteman dan bersaing di liga mingguan.","Buka di aplikasi","Dapatkan di Google Play","Sudah memasang aplikasi? Ketuk “Buka di aplikasi” lagi, atau masukkan kode ini di Liga › Teman."],
- th:["คุณได้รับคำเชิญ!","เพื่อนอยากเรียนภาษาญี่ปุ่นกับคุณที่ Japanese with Yuri มาเป็นเพื่อนกันและแข่งในลีกประจำสัปดาห์","เปิดในแอป","ดาวน์โหลดบน Google Play","ติดตั้งแอปแล้ว? แตะ “เปิดในแอป” อีกครั้ง หรือกรอกโค้ดนี้ที่ ลีก › เพื่อน"],
- tl:["Inimbitahan ka!","Gusto ng isang kaibigan na mag-aral ng Japanese kasama ka sa Japanese with Yuri. Maging magkaibigan at maglaban sa lingguhang liga.","Buksan sa app","Kunin sa Google Play","Na-install na ang app? I-tap ulit ang “Buksan sa app”, o ilagay ang code na ito sa Liga › Mga kaibigan."],
- zt:["你收到好友邀請！","朋友邀請你一起在 Japanese with Yuri 學日文。加為好友，在每週聯賽中一較高下吧。","在 App 中開啟","在 Google Play 下載","已安裝 App？再點一次「在 App 中開啟」，或在 聯賽 › 好友 輸入這個代碼。"]};
+ en:["You're invited!","A friend wants to learn Japanese with you on Japanese with Yuri. Add each other and compete in weekly leagues.","Open in the app","Get it on Google Play","Installed the app? Tap “Open in the app” again to become friends."],
+ ko:["친구 초대가 왔어요!","친구가 Japanese with Yuri에서 같이 일본어 공부하자고 초대했어요. 친구가 되어 주간 리그에서 겨뤄 보세요.","앱에서 열기","Google Play에서 받기","앱을 설치했다면 '앱에서 열기'를 한 번 더 누르면 친구가 돼요."],
+ vi:["Bạn được mời!","Một người bạn muốn cùng bạn học tiếng Nhật trên Japanese with Yuri. Hãy kết bạn và thi đấu trong giải hằng tuần.","Mở trong ứng dụng","Tải trên Google Play","Đã cài ứng dụng? Bấm “Mở trong ứng dụng” lần nữa để kết bạn."],
+ id:["Kamu diundang!","Seorang teman ingin belajar bahasa Jepang bersamamu di Japanese with Yuri. Berteman dan bersaing di liga mingguan.","Buka di aplikasi","Dapatkan di Google Play","Sudah memasang aplikasi? Ketuk “Buka di aplikasi” lagi untuk berteman."],
+ th:["คุณได้รับคำเชิญ!","เพื่อนอยากเรียนภาษาญี่ปุ่นกับคุณที่ Japanese with Yuri มาเป็นเพื่อนกันและแข่งในลีกประจำสัปดาห์","เปิดในแอป","ดาวน์โหลดบน Google Play","ติดตั้งแอปแล้ว? แตะ “เปิดในแอป” อีกครั้งเพื่อเป็นเพื่อนกัน"],
+ tl:["Inimbitahan ka!","Gusto ng isang kaibigan na mag-aral ng Japanese kasama ka sa Japanese with Yuri. Maging magkaibigan at maglaban sa lingguhang liga.","Buksan sa app","Kunin sa Google Play","Na-install na ang app? I-tap ulit ang “Buksan sa app” para maging magkaibigan."],
+ zt:["你收到好友邀請！","朋友邀請你一起在 Japanese with Yuri 學日文。加為好友，在每週聯賽中一較高下吧。","在 App 中開啟","在 Google Play 下載","已安裝 App？再點一次「在 App 中開啟」就能成為好友。"]};
 const want = (navigator.language || "en").toLowerCase(), map = {ko:"ko",vi:"vi",id:"id",in:"id",th:"th",tl:"tl",fil:"tl","zh-tw":"zt","zh-hk":"zt","zh-hant":"zt",zh:"zt"};
 const lang = map[want] || map[want.split("-")[0]] || "en", t = L[lang];
 document.documentElement.lang = lang === "zt" ? "zh-Hant" : lang;
@@ -32,7 +31,6 @@ const code = (new URLSearchParams(location.search).get("c") || "").toUpperCase()
 const PKG = "com.japanesewithyuri.android", play = "https://play.google.com/store/apps/details?id=" + PKG;
 const intent = "intent://add/" + code + "#Intent;scheme=jwyuri;package=" + PKG + ";S.browser_fallback_url=" + encodeURIComponent(play) + ";end";
 document.getElementById("t").textContent = t[0]; document.getElementById("s").textContent = t[1];
-document.getElementById("code").textContent = code ? code.slice(0, 4) + "-" + code.slice(4) : "—";
 const o = document.getElementById("open"); o.textContent = t[2]; o.href = /android/i.test(navigator.userAgent) ? intent : "jwyuri://add/" + code;
 const p = document.getElementById("play"); p.textContent = t[3]; p.href = play;
 document.getElementById("n").textContent = t[4];
