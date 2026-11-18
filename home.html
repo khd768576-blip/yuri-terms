@@ -57,7 +57,10 @@ html[lang=ko] h2.sec{letter-spacing:-.035em;line-height:1.25}
 
 section{overflow-x:clip}
 section[id],footer[id]{scroll-margin-top:60px}
-#levels,#dday,#progress,#faq{min-height:calc(100svh - 60px);display:flex;flex-direction:column;justify-content:center}
+@media (min-width:860px){#levels,#dday,#progress,#faq{min-height:calc(100svh - 60px);display:flex;flex-direction:column;justify-content:center}}
+p,.lead,.qlist details p{text-wrap:pretty}
+.sn{display:block;text-wrap:balance}
+@media (max-width:859px){.lead,.ftext p,.final p,.plist span{text-wrap:balance}}
 #levels>.wrap,#dday>.wrap,#progress>.wrap,#faq>.wrap{width:100%}
 /* ===== header ===== */
 .bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;transition:background .3s,box-shadow .3s}
@@ -517,7 +520,7 @@ function burst(el){var c=$("qcard"),r=el.getBoundingClientRect(),cr=c.getBoundin
 $("qnext").onclick=function(){qi=(qi+1)%Q.length;renderQ()};
 
 function esc(x){return x.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
-function brk(x){return esc(x).replace(/([.!?])\s+(?=\S)/g,"$1<br>").replace(/([。！？])(?=\S)/g,"$1<br>")}
+function brk(x){return esc(x).replace(/([.!?])\s+(?=\S)/g,"$1\n").replace(/([。！？])(?=\S)/g,"$1\n").split("\n").map(function(t){return'<span class="sn">'+t+"</span>"}).join("")}
 function set(l){cur=l;document.documentElement.lang={zt:"zh-Hant-TW",tl:"fil"}[l]||l;var t=T[l];
  document.querySelectorAll("img[data-k]").forEach(function(im){im.src="hp/"+l+"/"+im.getAttribute("data-k")+".webp"});
  document.querySelectorAll("[data-i]").forEach(function(e){var k=e.getAttribute("data-i");if(t[k]==null)return;if(e.hasAttribute("data-html"))e.innerHTML=t[k];else if(e.tagName==="P")e.innerHTML=brk(t[k]);else e.textContent=t[k];});
