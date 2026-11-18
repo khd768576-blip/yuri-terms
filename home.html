@@ -508,7 +508,7 @@ function pick(i,btn){if(answered)return;answered=true;var q=Q[qi],bs=$("opts").c
  for(var k=0;k<bs.length;k++){bs[k].disabled=true;if(k===q.a)bs[k].classList.add("ok")}
  if(i!==q.a)btn.classList.add("no");
  $("qs").querySelector(".blank").textContent=q.s[1];
- $("qrt").textContent=i===q.a?T[cur].ok:T[cur].ng2;$("qrp").textContent=q.x[cur];
+ $("qrt").textContent=i===q.a?T[cur].ok:T[cur].ng2;$("qrp").innerHTML=brk(q.x[cur]);
  $("qres").classList.add("show");
  if(i===q.a&&!matchMedia("(prefers-reduced-motion: reduce)").matches)burst(btn);}
 function burst(el){var c=$("qcard"),r=el.getBoundingClientRect(),cr=c.getBoundingClientRect();
@@ -517,11 +517,13 @@ function burst(el){var c=$("qcard"),r=el.getBoundingClientRect(),cr=c.getBoundin
   c.appendChild(p);setTimeout(function(x){return function(){x.remove()}}(p),1200)}}
 $("qnext").onclick=function(){qi=(qi+1)%Q.length;renderQ()};
 
+function esc(x){return x.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+function brk(x){return esc(x).replace(/([.!?])\s+(?=\S)/g,"$1<br>").replace(/([。！？])(?=\S)/g,"$1<br>")}
 function set(l){cur=l;document.documentElement.lang={zt:"zh-Hant-TW",tl:"fil"}[l]||l;var t=T[l];
  document.querySelectorAll("img[data-k]").forEach(function(im){im.src="hp/"+l+"/"+im.getAttribute("data-k")+".webp"});
- document.querySelectorAll("[data-i]").forEach(function(e){var k=e.getAttribute("data-i");if(t[k]==null)return;if(e.hasAttribute("data-html"))e.innerHTML=t[k];else e.textContent=t[k];});
+ document.querySelectorAll("[data-i]").forEach(function(e){var k=e.getAttribute("data-i");if(t[k]==null)return;if(e.hasAttribute("data-html"))e.innerHTML=t[k];else if(e.tagName==="P")e.innerHTML=brk(t[k]);else e.textContent=t[k];});
  $("lang").innerHTML=t.b+"&nbsp;▾";try{localStorage.setItem("wy-lang",l)}catch(e){}
- if(!answered)renderQ();else{var q=Q[qi];$("qhint").textContent=q.h[l];$("qrp").textContent=q.x[l];}}
+ if(!answered)renderQ();else{var q=Q[qi];$("qhint").textContent=q.h[l];$("qrp").innerHTML=brk(q.x[l]);}}
 var saved=null;try{saved=localStorage.getItem("wy-lang")}catch(e){}
 function detect(){var ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||"en"]);
  for(var i=0;i<ls.length;i++){var l=(ls[i]||"").toLowerCase();
