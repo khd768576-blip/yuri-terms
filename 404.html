@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f5f0e6">
+<link rel="icon" type="image/png" href="https://withyuri.app/s/icon.png">
+<title>Page not found — Japanese with Yuri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Inter:wght@400;500;600&display=swap">
+<style>
+:root{--paper:#f5f0e6;--ink:#1b2620;--ink-soft:#56635b;--green:#3d8565;--green-deep:#2c6a4f;--sakura:#dea0a8;--seal:#b83a33;--grid:rgba(61,133,101,.10);color-scheme:light}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,Pretendard,"Noto Sans KR","Noto Sans Thai","Noto Sans TC",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;
+  display:grid;place-items:center;text-align:center;
+  padding:24px max(20px,env(safe-area-inset-right,0px)) 24px max(20px,env(safe-area-inset-left,0px));
+  background:radial-gradient(90% 70% at 50% 40%,rgba(245,240,230,0) 0,var(--paper) 75%),linear-gradient(var(--grid) 1px,transparent 1px) 0 0/32px 32px,linear-gradient(90deg,var(--grid) 1px,transparent 1px) 0 0/32px 32px,var(--paper)}
+main{max-width:420px;display:flex;flex-direction:column;align-items:center;gap:18px}
+.jp{font-family:"Noto Serif JP","Noto Serif CJK JP","Hiragino Mincho ProN","Yu Mincho",serif}
+.big{font-size:clamp(64px,20vw,104px);font-weight:900;line-height:1;letter-spacing:.06em;margin:0}
+.big span{color:var(--green)}
+.kana{font-size:12px;letter-spacing:.3em;color:var(--ink-soft)}
+h1{margin:0;font-size:22px;font-weight:600;text-wrap:balance}
+p{margin:0;font-size:15px;line-height:1.65;color:var(--ink-soft);text-wrap:balance}
+a.btn{display:inline-flex;align-items:center;gap:10px;margin-top:6px;background:var(--ink);color:#f5f0e6;text-decoration:none;border-radius:14px;padding:13px 22px;font-weight:600;font-size:15px;box-shadow:0 10px 24px -12px rgba(27,38,32,.6);transition:transform .25s ease}
+a.btn:hover{transform:translateY(-2px)}
+.brand{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--ink-soft);text-decoration:none;margin-top:10px}
+.brand img{width:24px;height:24px;border-radius:6px}
+</style>
+</head><body>
+<main>
+  <div class="kana jp">まいご</div>
+  <div class="big jp" aria-hidden="true">迷<span>子</span></div>
+  <h1 id="t">Page not found</h1>
+  <p id="d">The page you're looking for doesn't exist or has moved.</p>
+  <a class="btn" id="b" href="https://withyuri.app/">Back to home</a>
+  <a class="brand" href="https://withyuri.app/"><img src="https://withyuri.app/s/icon.png" alt="">Japanese with Yuri</a>
+</main>
+<script>
+(function(){
+var T={
+en:["Page not found","The page you're looking for doesn't exist or has moved.","Back to home"],
+ko:["페이지를 찾을 수 없어요","주소가 바뀌었거나 없는 페이지예요.","홈으로 가기"],
+vi:["Không tìm thấy trang","Trang bạn tìm không tồn tại hoặc đã được chuyển đi.","Về trang chủ"],
+id:["Halaman tidak ditemukan","Halaman yang kamu cari tidak ada atau sudah dipindahkan.","Kembali ke beranda"],
+th:["ไม่พบหน้านี้","หน้าที่คุณกำลังหาไม่มีอยู่หรือถูกย้ายไปแล้ว","กลับหน้าแรก"],
+tl:["Hindi mahanap ang page","Wala na ang page na hinahanap mo, o nailipat na ito.","Bumalik sa home"],
+zt:["找不到這個頁面","你要找的頁面不存在，或已經移到別的地方。","回到首頁"]};
+var saved=null;try{saved=localStorage.getItem("wy-lang")}catch(e){}
+function detect(){var ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||"en"]);
+ for(var i=0;i<ls.length;i++){var l=(ls[i]||"").toLowerCase();
+  if(l.indexOf("ko")===0)return"ko";if(l.indexOf("vi")===0)return"vi";if(l.indexOf("id")===0||l.indexOf("in")===0)return"id";if(l.indexOf("th")===0)return"th";
+  if(l.indexOf("fil")===0||l.indexOf("tl")===0)return"tl";if(l==="zh-tw"||l==="zh-hk"||l.indexOf("zh-hant")===0)return"zt";if(l.indexOf("en")===0)return"en";}
+ return"en";}
+var l=(saved&&T[saved])?saved:detect();
+var x=T[l];document.documentElement.lang=({zt:"zh-Hant-TW",tl:"fil"})[l]||l;
+document.getElementById("t").textContent=x[0];document.getElementById("d").textContent=x[1];document.getElementById("b").textContent=x[2];
+document.title=x[0]+" — Japanese with Yuri";
+})();
+</script>
+</body></html>
