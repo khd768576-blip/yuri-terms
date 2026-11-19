@@ -16,6 +16,13 @@
 <meta name="twitter:image" content="https://withyuri.app/og.jpg">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://withyuri.app/#org","name":"Japanese with Yuri","url":"https://withyuri.app/","logo":"https://withyuri.app/s/icon.png","email":"support@withyuri.app","sameAs":["https://play.google.com/store/apps/details?id=com.japanesewithyuri.android","https://www.youtube.com/@JapaneseWithYuriTV","https://www.tiktok.com/@japanese_with_yuri"]},{"@type":"WebSite","@id":"https://withyuri.app/#site","name":"Japanese with Yuri","url":"https://withyuri.app/","publisher":{"@id":"https://withyuri.app/#org"}},{"@type":"MobileApplication","name":"Japanese with Yuri","operatingSystem":"ANDROID","applicationCategory":"EducationalApplication","url":"https://play.google.com/store/apps/details?id=com.japanesewithyuri.android","installUrl":"https://play.google.com/store/apps/details?id=com.japanesewithyuri.android","inLanguage":["en","ko","vi","id","th","fil","zh-TW"],"description":"Japanese learning app: word and grammar quizzes, real-life conversation practice and JLPT-style mock tests from N5 to N1.","publisher":{"@id":"https://withyuri.app/#org"}}]}</script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<script id="wy-preload">(function(){var l=null;try{l=localStorage.getItem("wy-lang")}catch(e){}
+var ok={en:1,ko:1,vi:1,id:1,th:1,tl:1,zt:1};
+if(!l||!ok[l]){l="en";var ls=(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||"en"]);
+ for(var i=0;i<ls.length;i++){var c=(ls[i]||"").toLowerCase();
+  if(c.indexOf("ko")===0){l="ko";break}if(c.indexOf("vi")===0){l="vi";break}if(c.indexOf("id")===0||c.indexOf("in")===0){l="id";break}if(c.indexOf("th")===0){l="th";break}
+  if(c.indexOf("fil")===0||c.indexOf("tl")===0){l="tl";break}if(c==="zh-tw"||c==="zh-hk"||c.indexOf("zh-hant")===0){l="zt";break}if(c.indexOf("en")===0){l="en";break}}}
+var k=document.createElement("link");k.rel="preload";k.as="image";k.href="hp/"+l+"/home.webp";k.setAttribute("fetchpriority","high");document.head.appendChild(k);})();</script>
 <title>Japanese with Yuri — Learn Japanese for the JLPT, N5 to N1</title>
 <meta name="description" content="Learn Japanese a little every day: word and grammar quizzes, real-life conversation practice and JLPT-style mock tests from N5 to N1.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -323,7 +330,7 @@ footer{border-top:1px solid var(--rule);padding-block:40px 48px;font-size:13px;c
       </div>
       <div class="stage">
         <div class="note"><div class="jp"><small>きょうのもくひょう</small>今日の<br>目標</div><p data-i="hn">A daily plan built around your JLPT date.</p><hr></div>
-        <div class="phone"><img data-k="home" alt="" width="540" height="1168"></div>
+        <div class="phone"><img data-k="home" alt="" width="540" height="1168" fetchpriority="high"></div>
       </div>
     </div>
     <div class="scroll"><i></i><span>Scroll</span></div>
